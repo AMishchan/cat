@@ -29,10 +29,6 @@ public class Cat {
         weight = weight + amount;
     }
 
-    public Double foodBack() {
-        weightDiff = weight - originWeight ;
-        return weightDiff;
-    }
 
     public Double getWeight() {
         return weight;
@@ -50,8 +46,33 @@ public class Cat {
         }
     }
 
+    private Boolean weightControl()
+
+    {
+        if (this.getStatus().equals("Playing")) {
+          return true;
+        }else{
+            return false;
+        }
+    }
+
+    public String foodBack() {
+        if (this.weightControl()) {
+            weightDiff = weight - originWeight;
+            
+            return weightDiff.toString();
+        } else {
+            return "Problems with cat.";
+        }
+    }
+
     public void goWc() {
-        weight -= toilet;
-        System.out.println("Awesome!");
+        if (this.weightControl()){
+            weight -= toilet;
+            System.out.println("Awesome!");
+        }else{
+            System.out.println("Problems with cat.");
+        }
+
     }
 }
