@@ -46,31 +46,36 @@ public class Cat {
         }
     }
 
-    private Boolean weightControl()
-
+    private Boolean weightControl()                      //метод возвращает true или false в зависимости от текущего
+                                                         //состояния кота
     {
-        if (this.getStatus().equals("Playing")) {
-          return true;
-        }else{
+        if (this.getStatus().equals("Playing")) {        //если кот не взорвался или не умер можно производить над ним вычисления
+            return true;
+        } else if (this.getStatus().equals("Sleeping")) {
+            return true;
+        } else {
             return false;
         }
     }
 
     public String foodBack() {
-        if (this.weightControl()) {
+        if (this.weightControl()) {                      //если метод контроля веса возвратил true вычисляем количество съеденной еды
             weightDiff = weight - originWeight;
-            
-            return weightDiff.toString();
+          if (weightDiff > 0 ) {                         //проверяем - ел ли кот вообще что-нибудь
+              return weightDiff.toString();
+          } else {
+              return "A cat does not eat";
+          }
         } else {
             return "Problems with cat.";
         }
     }
 
     public void goWc() {
-        if (this.weightControl()){
+        if (this.weightControl()) {
             weight -= toilet;
             System.out.println("Awesome!");
-        }else{
+        } else {
             System.out.println("Problems with cat.");
         }
 

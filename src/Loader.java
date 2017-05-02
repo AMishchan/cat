@@ -5,7 +5,7 @@ public class Loader
     {
         Cat cat = new Cat();
         System.out.println(cat.getWeight());
-    //    cat.feed(120.0);
+       cat.feed(120.0);
         for (int i = 0; i < 50; i++) {
             cat.meow();
         }
